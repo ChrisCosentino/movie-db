@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --color-light-grey: #f5f7f9;
+  --color-dark-black: #141414;
+  --color-light-black: #252525;
+  --color-placeholder-grey: #dadbdc;
+}
+
+::placeholder {
+  color: var(--color-placeholder-grey);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Mulish", sans-serif;
+}
+
+/* Container around the home app */
+.container {
+  padding: 10px 60px;
+}
+
+/* When the screen is ___px or less close padding borders*/
+@media only screen and (max-width: 800px) {
+  .container {
+    padding: 0px 5px;
+  }
+}
+
+/* The nav container */
+nav {
+  padding: 20px 0px;
+  /* background-color: coral; */
+}
+
+/* header title */
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+/* The container around the search including explore title */
+.search-container {
+  padding: 20px 0px;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+}
+
+/* The explore title */
+.explore-title {
+  padding-bottom: 30px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+/* The search input and button */
+.search-field {
+  display: grid;
+  grid-template-columns: 1fr 0.1fr;
+  gap: 2px;
+}
+
+/* The search field */
+.search-text {
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  height: 44px;
+  background-color: var(--color-light-grey);
+  padding-left: 20px;
+  font-size: 1rem;
+}
+
+/* All the button classes general */
+.btn {
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+/* The search btn */
+.search-btn {
+  max-width: 64px;
+  max-height: 64px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: var(--color-dark-black);
+  color: white;
+}
+
+/* The container that has all movie results */
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* When the screen is ___px or less make grid 4 cols*/
+@media only screen and (max-width: 1126px) {
+  .movies-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* When the screen is ___px or less make grid 4 cols*/
+@media only screen and (max-width: 926px) {
+  .movies-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* When the screen is ___px or less make grid 4 cols*/
+@media only screen and (max-width: 626px) {
+  .movies-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* When the screen is ___px or less make grid 4 cols*/
+@media only screen and (max-width: 412px) {
+  .movies-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* The individual movies */
+.movie-item {
+  align-self: center;
+}
+
+/* The preview image of the movie */
+.preview-img {
+  max-width: 200px;
+  min-width: 200px;
+  max-height: 320px;
+  min-height: 320px;
+}
+
+/* --------------------------------- */
+/* Details page */
+
+/* the div on the lading page covers first screen with backdrop */
+.landing-container {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Background image */
+.backdrop-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(60%);
+  z-index: -10;
+  position: absolute;
+}
+
+/* The movie title and tagline container */
+.movie-title-container {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+}
+
+.movie-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* The detials after scrolling down from landing */
+.details-container {
+  /* min-height: 100vh; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 30px;
+  justify-items: left;
+  gap: 5px;
+}
+
+/* When the screen is ___px or less make grid 4 cols*/
+@media only screen and (max-width: 849px) {
+  .details-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.details-section {
+  width: 100%;
+}
+
+/* general section title */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* the overview text */
+.overview-text {
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* the individual detail split in flexx */
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding: 10px 0px;
+  border-bottom: 1px solid var(--color-light-black);
+}
+
+.detail-name {
+  text-transform: uppercase;
+  font-weight: 200;
+}
+.genres-container {
+  width: 100%;
+}
+
+.pill-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.pill {
+  background-color: var(--color-light-grey);
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.productions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.production-img {
+  width: 35%;
+}
+
+.close-btn {
+  background-color: rgba(20, 20, 20, 0.8);
+  color: white;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.close-btn:hover {
+  cursor: pointer;
+  background-color: rgba(20, 20, 20, 1);
+}
