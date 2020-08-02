@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useRef } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Home from "./components/Home";
@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import MovieDetails from "./components/MovieDetails";
 
 import "./styles.css";
+import gsap from "gsap";
 
 import MovieState from "./context/movie/MovieState";
 

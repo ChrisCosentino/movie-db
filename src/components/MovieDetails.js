@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from "react";
+import React, { useContext, useEffect, Fragment, useRef } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -6,13 +6,32 @@ import MovieContext from "../context/movie/movieContext";
 import GenreItem from "./GenreItem";
 import ProductionItem from "./ProductionItem";
 
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 const MovieDetails = ({ match }) => {
   const movieContext = useContext(MovieContext);
 
   const { getMovie, loading, movie } = movieContext;
 
+  const closeRef = useRef(null);
+  const detailsRef = useRef(null);
+
   useEffect(() => {
     getMovie(match.params.id);
+
+    gsap.from(detailsRef.current, {
+      y: 900,
+      ease: "rough",
+      duration: 1,
+      ScrollTrigger: {
+        id: "details",
+        trigger: detailsRef.current,
+        start: "top center+=-10",
+        toggleActions: "play none none reverse",
+        markers: true,
+      },
+    });
   }, []);
 
   console.log(movie);
@@ -49,7 +68,7 @@ const MovieDetails = ({ match }) => {
 
   return (
     <div>
-      <Link to="/" push className="close-btn">
+      <Link to="/" push className="close-btn" ref={closeRef}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -79,7 +98,7 @@ const MovieDetails = ({ match }) => {
         </div>
       </div>
 
-      <div className="details-container">
+      <div className="details-container" ref={detailsRef} id="details">
         <div className="overview-section section">
           <h1 className="section-title">Overview</h1>
           <p className="overview-text">{overview}</p>
@@ -89,11 +108,15 @@ const MovieDetails = ({ match }) => {
           <h1 className="section-title">Details</h1>
           <div className="detail">
             <span className="detail-name">Budget</span>
-            <span className="detail-value">{budget}</span>
+            <span className="detail-value">{`$ ${Number(
+              budget
+            ).toLocaleString()}`}</span>
           </div>
           <div className="detail">
             <span className="detail-name">Revenue</span>
-            <span className="detail-value">{revenue}</span>
+            <span className="detail-value">{`$ ${Number(
+              revenue
+            ).toLocaleString()}`}</span>
           </div>
           <div className="detail">
             <span className="detail-name">Status</span>

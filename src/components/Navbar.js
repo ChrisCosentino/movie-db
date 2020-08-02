@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
 
 const Navbar = () => {
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    gsap.from(navRef.current, {
+      y: 900,
+      ease: "bounce",
+      duration: 1,
+    });
+  });
+
   return (
-    <nav>
+    <nav ref={navRef}>
       <h1 className="title">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,11 +1,24 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 
 import MovieContext from "../context/movie/movieContext";
+
+import gsap from "gsap";
 
 const Search = () => {
   const movieContext = useContext(MovieContext);
 
+  const formRef = useRef(null);
+
   const [text, setText] = useState("");
+
+  useEffect(() => {
+    gsap.from(formRef.current, {
+      y: 900,
+      ease: "rough",
+      duration: 1,
+      delay: 0.3,
+    });
+  }, []);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -20,7 +33,7 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-container">
+    <form onSubmit={handleSubmit} className="search-container" ref={formRef}>
       <h1 className="explore-title">Explore</h1>
       <div className="search-field">
         <input
@@ -30,6 +43,7 @@ const Search = () => {
           name="text"
           placeholder="Search movies..."
           value={text}
+          autoComplete="false"
         />
         <button type="submit" className="search-btn btn">
           <svg

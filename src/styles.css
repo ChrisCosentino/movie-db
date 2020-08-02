@@ -136,9 +136,20 @@ nav {
   }
 }
 
-/* The individual movies */
+/* The individual movies container */
 .movie-item {
   align-self: center;
+}
+
+/* The individaul movie */
+.movie-item-container {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+
+.movie-item-container:hover {
+  transform: scale(1.1);
 }
 
 /* The preview image of the movie */
