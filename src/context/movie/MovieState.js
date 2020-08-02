@@ -6,17 +6,17 @@ import MovieReducer from "./movieReducer";
 
 import { GET_MOVIE, SEARCH_MOVIES, SET_LOADING } from "../types";
 
-let movieDbApiKey;
-
-if (process.env.NODE_ENV !== "production") {
-  movieDbApiKey = process.env.REACT_APP_MOVIEDB_API_KEY;
-  console.log("in production build");
-} else {
-  movieDbApiKey = process.env.MOVIEDB_API_KEY;
-  console.log("not in production build");
-}
-
 const MovieState = (props) => {
+  let movieDbApiKey;
+
+  if (process.env.NODE_ENV !== "production") {
+    movieDbApiKey = process.env.REACT_APP_MOVIEDB_API_KEY;
+    console.log("not in production build");
+  } else {
+    movieDbApiKey = process.env.MOVIEDB_API_KEY;
+    console.log("in production build");
+  }
+
   const initialState = {
     movies: [],
     movie: {},
