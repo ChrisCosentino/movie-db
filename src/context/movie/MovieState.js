@@ -10,8 +10,10 @@ let movieDbApiKey;
 
 if (process.env.NODE_ENV !== "production") {
   movieDbApiKey = process.env.REACT_APP_MOVIEDB_API_KEY;
+  console.log("in production build");
 } else {
   movieDbApiKey = process.env.MOVIEDB_API_KEY;
+  console.log("not in production build");
 }
 
 const MovieState = (props) => {
