@@ -1,7 +1,7 @@
 import React from "react";
 
 const GenreItem = ({ genre }) => {
-  const { id, name } = genre;
+  const { name } = genre;
 
   return <div className="pill">{name}</div>;
 };

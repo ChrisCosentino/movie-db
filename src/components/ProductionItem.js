@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 const ProductionItem = ({ production }) => {
-  const { id, logo_path, name, origin_country } = production;
+  const { logo_path, name } = production;
 
   return (
     <Fragment>

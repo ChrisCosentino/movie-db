@@ -7,7 +7,6 @@ import GenreItem from "./GenreItem";
 import ProductionItem from "./ProductionItem";
 
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 const MovieDetails = ({ match }) => {
   const movieContext = useContext(MovieContext);
@@ -24,51 +23,41 @@ const MovieDetails = ({ match }) => {
       y: 900,
       ease: "rough",
       duration: 1,
-      ScrollTrigger: {
-        id: "details",
-        trigger: detailsRef.current,
-        start: "top center+=-10",
-        toggleActions: "play none none reverse",
-        markers: true,
-      },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(movie);
-
   const {
-    original_title,
-    adult,
+    // original_title,
+    // adult,
     backdrop_path,
     budget,
     genres,
-    homepage,
-    original_language,
+    // homepage,
+    // original_language,
     overview,
-    popularity,
-    poster_path,
+    // popularity,
+    // poster_path,
     production_companies,
-    production_countries,
+    // production_countries,
     status,
     release_date,
     runtime,
     revenue,
     tagline,
     title,
-    video,
-    vote_average,
-    vote_count,
+    // video,
+    // vote_average,
+    // vote_count,
   } = movie;
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  console.log(genres);
-
   return (
     <div>
-      <Link to="/" push className="close-btn" ref={closeRef}>
+      <Link to="/" className="close-btn" ref={closeRef}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -76,10 +65,10 @@ const MovieDetails = ({ match }) => {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-x"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="feather feather-x"
         >
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -138,7 +127,7 @@ const MovieDetails = ({ match }) => {
             {production_companies !== undefined && (
               <Fragment>
                 {production_companies.map((production) => (
-                  <ProductionItem production={production} />
+                  <ProductionItem production={production} key={production.id} />
                 ))}
               </Fragment>
             )}
@@ -151,7 +140,7 @@ const MovieDetails = ({ match }) => {
             {genres !== undefined && (
               <Fragment>
                 {genres.map((genre) => (
-                  <GenreItem genre={genre} />
+                  <GenreItem genre={genre} key={genre.id} />
                 ))}
               </Fragment>
             )}
