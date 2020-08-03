@@ -10,11 +10,9 @@ let movieDbApiKey;
 
 if (process.env.NODE_ENV !== "production") {
   movieDbApiKey = process.env.REACT_APP_MOVIEDB_API_KEY;
-  console.log("not in production build");
 } else {
-  movieDbApiKey = process.env.MOVIEDB_API_KEY;
-  console.log(process.env.MOVIEDB_API_KEY);
-  console.log("in production build");
+  // There was an error on netlify so I added react app in front
+  movieDbApiKey = process.env.REACT_APP_MOVIEDB_API_KEY;
 }
 
 const MovieState = (props) => {
